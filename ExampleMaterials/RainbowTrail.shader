@@ -6,12 +6,13 @@ Shader "Unlit/RainbowTrail"
 	{
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
+		[Enum(UnityEngine.Rendering.CullMode)] _Cull ("Culling", Float) = 0
 	}
 
 	SubShader
 	{
 		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
-		Cull Back
+		Cull [_Cull]
 		CGPROGRAM
 		#pragma target 3.0
 		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows 
